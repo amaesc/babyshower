@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Baby Shower de José Rohan</title>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Great+Vibes&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --bg: #d9ecfa;
+    --bg-soft: #e6f2fb;
+    --card: rgba(255, 255, 255, 0.55);
+    --card-strong: rgba(255, 255, 255, 0.9);
+    --ink: #154d6a;
+    --ink-soft: #1b6a8e;
+    --accent: #2aa7da;
+    --accent-soft: #5dc1ec;
+    --accent-deep: #0e3e57;
+    --gradient-btn: linear-gradient(90deg, #6fc6ee 0%, #2aa7da 50%, #1f88c2 100%);
+    --shadow-card: 0 6px 18px -8px rgba(20, 80, 110, 0.15);
+    --shadow-btn: 0 10px 24px -10px rgba(42, 167, 218, 0.55);
+    --shadow-dark: 0 10px 28px -12px rgba(14, 62, 87, 0.7);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body { min-height: 100%; }
+
+  body {
+    font-family: 'Nunito', system-ui, sans-serif;
+    color: var(--ink);
+    background:
+      radial-gradient(1200px 600px at 50% -10%, #eaf5fc 0%, transparent 60%),
+      radial-gradient(900px 500px at 110% 90%, #cbe4f6 0%, transparent 55%),
+      var(--bg);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* Decorative floating emoji */
+  .deco {
+    position: fixed;
+    font-size: clamp(48px, 7vw, 88px);
+    line-height: 1;
+    user-select: none;
+    pointer-events: none;
+    z-index: 0;
+    filter: drop-shadow(0 8px 12px rgba(20, 80, 110, 0.12));
+    animation: float 6s ease-in-out infinite;
+  }
+  .deco.cat-1 { top: 4%;  left: 3%;  animation-delay: 0s;   }
+  .deco.cat-2 { top: 38%; left: 2%;  animation-delay: 1.2s; }
+  .deco.cat-3 { bottom: 6%; left: 4%; animation-delay: 2.4s; font-size: clamp(40px, 5.5vw, 70px); }
+  .deco.horse-1 { top: 8%;  right: 3%; animation-delay: 0.6s; }
+  .deco.horse-2 { top: 40%; right: 2%; animation-delay: 1.8s; }
+  .deco.horse-3 { bottom: 8%; right: 4%; animation-delay: 3s; font-size: clamp(40px, 5.5vw, 70px); }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(-2deg); }
+    50%      { transform: translateY(-14px) rotate(2deg); }
+  }
+
+  /* Layout */
+  .page {
+    position: relative;
+    z-index: 1;
+    max-width: 620px;
+    margin: 0 auto;
+    padding: 56px 28px 80px;
+    text-align: center;
+  }
+
+  /* Header */
+  .eyebrow {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.32em;
+    font-size: 0.78rem;
+    color: var(--accent);
+    margin-bottom: 14px;
+    animation: rise 0.9s ease-out both;
+  }
+
+  .title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: clamp(2.8rem, 8vw, 4.4rem);
+    line-height: 1;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    animation: rise 1s ease-out 0.1s both;
+  }
+
+  .de {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.15rem;
+    color: var(--ink-soft);
+    margin-top: 10px;
+    animation: rise 1s ease-out 0.2s both;
+  }
+
+  .name {
+    font-family: 'Great Vibes', cursive;
+    font-weight: 400;
+    font-size: clamp(2.6rem, 8vw, 3.8rem);
+    color: var(--ink);
+    line-height: 1.05;
+    margin-top: 22px;
+    animation: rise 1s ease-out 0.3s both;
+  }
+
+  .divider {
+    width: 110px;
+    height: 2px;
+    margin: 28px auto 0;
+    background: linear-gradient(90deg, transparent, var(--accent-soft), transparent);
+    border-radius: 2px;
+    animation: stretch 1.2s ease-out 0.4s both;
+  }
+
+  @keyframes stretch {
+    from { width: 0; opacity: 0; }
+    to   { width: 110px; opacity: 1; }
+  }
+
+  /* Bottle medallion */
+  .medallion {
+    width: 130px;
+    height: 130px;
+    margin: 44px auto 0;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #ffffff 0%, #eef7fd 70%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 64px;
+    box-shadow:
+      0 14px 30px -10px rgba(20, 80, 110, 0.18),
+      inset 0 -3px 8px rgba(42, 167, 218, 0.08);
+    animation: pop 1.1s cubic-bezier(0.34, 1.56, 0.64, 1) 0.5s both;
+  }
+  .medallion span {
+    display: inline-block;
+    transform: rotate(-12deg);
+    animation: gentle 4s ease-in-out infinite;
+  }
+
+  @keyframes pop {
+    from { transform: scale(0.6); opacity: 0; }
+    to   { transform: scale(1); opacity: 1; }
+  }
+  @keyframes gentle {
+    0%, 100% { transform: rotate(-12deg) translateY(0); }
+    50%      { transform: rotate(-6deg) translateY(-4px); }
+  }
+
+  .message {
+    margin: 32px auto 0;
+    max-width: 460px;
+    font-size: 1.05rem;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    animation: rise 1s ease-out 0.7s both;
+  }
+
+  /* Info cards */
+  .info {
+    margin: 36px auto 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    animation: rise 1s ease-out 0.85s both;
+  }
+
+  .card {
+    background: var(--card);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 20px;
+    padding: 22px 24px;
+    box-shadow: var(--shadow-card);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 28px -12px rgba(20, 80, 110, 0.22);
+  }
+
+  .row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    color: var(--ink);
+    font-size: 1.1rem;
+  }
+  .row + .row { margin-top: 10px; }
+  .row svg { flex-shrink: 0; color: var(--accent); }
+  .row .label { font-weight: 700; }
+
+  /* Buttons */
+  .actions {
+    margin-top: 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    animation: rise 1s ease-out 1s both;
+  }
+
+  .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 18px 22px;
+    border-radius: 999px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .btn:active { transform: translateY(1px) scale(0.99); }
+  .btn:hover  { transform: translateY(-2px); }
+
+  .btn-light {
+    background: #ffffff;
+    color: var(--ink);
+    box-shadow: 0 8px 20px -10px rgba(20, 80, 110, 0.25);
+  }
+  .btn-light:hover { box-shadow: 0 14px 26px -12px rgba(20, 80, 110, 0.35); }
+
+  .btn-gradient {
+    background: var(--gradient-btn);
+    color: #ffffff;
+    box-shadow: var(--shadow-btn);
+  }
+  .btn-gradient:hover { filter: brightness(1.05); box-shadow: 0 16px 32px -10px rgba(42, 167, 218, 0.7); }
+
+  .btn-dark {
+    background: var(--accent-deep);
+    color: #ffffff;
+    box-shadow: var(--shadow-dark);
+  }
+  .btn-dark:hover { background: #0c354a; }
+
+  .btn svg { flex-shrink: 0; }
+
+  /* Subtle shimmer on gradient button */
+  .btn-gradient::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.35) 50%, transparent 70%);
+    transform: translateX(-100%);
+    transition: transform 0.6s;
+  }
+  .btn-gradient:hover::after { transform: translateX(100%); }
+
+  /* Footer */
+  .footer {
+    margin-top: 48px;
+    font-size: 1.05rem;
+    color: var(--ink-soft);
+    animation: rise 1s ease-out 1.15s both;
+  }
+  .hearts {
+    margin-top: 14px;
+    font-size: 1.6rem;
+    letter-spacing: 0.4em;
+    animation: rise 1s ease-out 1.25s both;
+  }
+
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Small screens — pull deco emojis closer in */
+  @media (max-width: 480px) {
+    .deco { font-size: 44px; filter: drop-shadow(0 6px 8px rgba(20,80,110,0.12)); }
+    .deco.cat-1 { top: 2%;  left: -8px; }
+    .deco.cat-2 { top: 32%; left: -10px; }
+    .deco.cat-3 { bottom: 4%; left: -8px; font-size: 36px; }
+    .deco.horse-1 { top: 6%; right: -8px; }
+    .deco.horse-2 { top: 34%; right: -10px; }
+    .deco.horse-3 { bottom: 4%; right: -8px; font-size: 36px; }
+    .page { padding: 48px 22px 64px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Decorative floating animals -->
+<div class="deco cat-1" aria-hidden="true">🐱</div>
+<div class="deco cat-2" aria-hidden="true">🐱</div>
+<div class="deco cat-3" aria-hidden="true">🐱</div>
+<div class="deco horse-1" aria-hidden="true">🐴</div>
+<div class="deco horse-2" aria-hidden="true">🐴</div>
+<div class="deco horse-3" aria-hidden="true">🐴</div>
+
+<main class="page">
+
+  <p class="eyebrow">TE INVITAMOS AL</p>
+  <h1 class="title">Baby Shower</h1>
+  <p class="de">de</p>
+  <h2 class="name">José Rohan</h2>
+  <div class="divider"></div>
+
+  <div class="medallion" aria-hidden="true"><span>🍼</span></div>
+
+  <p class="message">
+    ¡Estamos esperando con mucho amor la llegada de nuestro bebé!
+    Acompáñanos a celebrar este momento tan especial.
+  </p>
+
+  <section class="info">
+    <div class="card">
+      <div class="row">
+        <!-- calendar icon -->
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="4" width="18" height="18" rx="3"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        <span class="label">Sábado 4 de Julio</span>
+      </div>
+      <div class="row">
+        <!-- clock icon -->
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        <span>10:00 AM</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="row">
+        <!-- pin icon -->
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"></path>
+          <circle cx="12" cy="10" r="3"></circle>
+        </svg>
+        <span>Restaurante La Casona</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="actions">
+    <a class="btn btn-light"
+       href="https://maps.app.goo.gl/oZYytWio238QUoL89"
+       target="_blank" rel="noopener">
+      <!-- send/navigation icon -->
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="22" y1="2" x2="11" y2="13"></line>
+        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+      </svg>
+      <span>📍 Ver Ubicación</span>
+    </a>
+
+    <a class="btn btn-gradient"
+       href="https://www.amazon.com.mx/baby-reg/jos-fernndez-yeirin-gonzlez-octubre-2026-chihuahua/22KBNU4QILT3O?ref_=cm_sw_r_apin_dp_G6W6HE4VMSAVHYTJAB34&language=en-US"
+       target="_blank" rel="noopener">
+      <!-- gift icon -->
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 12 20 22 4 22 4 12"></polyline>
+        <rect x="2" y="7" width="20" height="5"></rect>
+        <line x1="12" y1="22" x2="12" y2="7"></line>
+        <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path>
+        <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path>
+      </svg>
+      <span>🎁 Mesa de Regalos Amazon</span>
+    </a>
+
+    <a class="btn btn-dark"
+       href="https://forms.gle/uNtSVDcVyocj4B8m9"
+       target="_blank" rel="noopener">
+      <!-- check circle icon -->
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+      </svg>
+      <span>✉️ Confirmar Asistencia</span>
+    </a>
+  </section>
+
+  <p class="footer">¡Te esperamos con mucho cariño! 💙</p>
+  <p class="hearts" aria-hidden="true">💙 🐴 💙</p>
+
+</main>
+
+</body>
+</html>
